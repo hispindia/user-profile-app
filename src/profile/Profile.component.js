@@ -8,19 +8,11 @@ import userProfileStore from './profile.store';
 
 function EditProfile(props, context) {
     const fieldKeys = [
+        'username',
         'firstName',
         'surname',
         'email',
         'phoneNumber',
-        'introduction',
-        'jobTitle',
-        'gender',
-        'birthday',
-        'nationality',
-        'employer',
-        'education',
-        'interests',
-        'languages',
     ];
 
     const pageLabel = context.d2.i18n.getTranslation('edit_user_profile');

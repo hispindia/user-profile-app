@@ -2,24 +2,20 @@ const settingsKeyMapping = {
     /* ================================================================= */
     /* Category: Profile Settings                                        */
     /* ================================================================= */
+    username: {
+        label: 'user_name',
+        type: 'textfield',
+        validators: ['codeString'],
+    },
     firstName: {
         label: 'first_name',
         type: 'textfield',
-        validators: ['required'],
+        validators: ['nameString'],
     },
     surname: {
         label: 'surname',
         type: 'textfield',
-        validators: ['required'],
-    },
-    gender: {
-        label: 'gender',
-        type: 'dropdown',
-        options: {
-            gender_male: 'gender_male',
-            gender_female: 'gender_female',
-            gender_other: 'gender_other',
-        },
+        validators: ['nameString'],
     },
     email: {
         label: 'user_email_address',
@@ -29,53 +25,7 @@ const settingsKeyMapping = {
     phoneNumber: {
         label: 'phone_number',
         type: 'textfield',
-    },
-    introduction: {
-        label: 'introduction',
-        type: 'textfield',
-        multiLine: true,
-    },
-    jobTitle: {
-        label: 'job_title',
-        type: 'textfield',
-    },
-    userRoles: {
-        label: 'user_roles',
-        type: 'userRoles',
-        validators: ['required'],
-    },
-    userOrgUnits: {
-        label: 'user_organizational_units',
-        type: 'userOrgUnits',
-        validators: ['required'],
-    },
-    birthday: {
-        label: 'birthday',
-        type: 'date',
-    },
-    nationality: {
-        label: 'nationality',
-        type: 'textfield',
-    },
-    employer: {
-        label: 'employer',
-        type: 'textfield',
-    },
-    education: {
-        label: 'education',
-        type: 'textfield',
-        multiLine: true,
-    },
-    // TODO: chips component for interests and languages?
-    interests: {
-        label: 'interests',
-        type: 'textfield',
-        multiLine: true,
-    },
-    languages: {
-        label: 'languages',
-        type: 'textfield',
-        multiLine: true,
+        validators: ['phoneNumber'],
     },
     /* ================================================================= */
     /* Category: Account Settings                                        */

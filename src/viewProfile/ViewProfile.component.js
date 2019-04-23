@@ -7,21 +7,11 @@ import profileSettingsStore from '../profile/profile.store';
 
 function ViewProfile(props, context) {
     const labelKeys = [
+        'username',
         'firstName',
         'surname',
-        'gender',
         'email',
         'phoneNumber',
-        'introduction',
-        'birthday',
-        'nationality',
-        'employer',
-        'jobTitle',
-        'userRoles',
-        'userOrgUnits',
-        'education',
-        'interests',
-        'languages',
     ];
     const pageLabel = context.d2.i18n.getTranslation('view_profile');
     return (

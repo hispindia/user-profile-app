@@ -94,6 +94,15 @@ function createTextField(fieldBase, mapping) {
         }),
     });
 }
+function createNumericField(fieldBase, mapping) {
+    return Object.assign({}, fieldBase, {
+        props: Object.assign({}, fieldBase.props, {
+            changeEvent: 'onBlur',
+            multiLine: !!mapping.multiLine,
+            disabled: !!mapping.disabled,
+        }),
+    });
+}
 
 function createDateField(fieldBase, fieldName, d2, mapping, valueStore) {
     const state = valueStore.state;
@@ -217,6 +226,7 @@ function createField(fieldName, valueStore, d2) {
     const mapping = userSettingsKeyMapping[fieldName];
     const fieldBase = createFieldBaseObject(fieldName, mapping, d2, valueStore);
     switch (mapping.type) {
+    case 'numeric': return createNumericField(fieldBase, mapping);
     case 'textfield': return createTextField(fieldBase, mapping);
     case 'date': return createDateField(fieldBase, fieldName, d2, mapping, valueStore);
     case 'checkbox': return createCheckBox(fieldBase, fieldName);
