@@ -56,5 +56,4 @@ userProfileActions.save.subscribe(({ data, complete, error }) => {
             });
     });
 });
-});
 export default userProfileActions;
