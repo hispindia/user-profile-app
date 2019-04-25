@@ -2,11 +2,14 @@ import log from 'loglevel';
 
 import { getInstance as getD2 } from 'd2/lib/d2';
 import Action from 'd2-ui/lib/action/Action';
-import { wordToValidatorMap } from 'd2-ui/lib/forms/Validators';
 
 import userSettingsActions from '../app.actions';
 import userProfileStore from './profile.store';
 import userSettingsKeyMapping from '../userSettingsMapping';
+
+//import { wordToValidatorMap } from 'd2-ui/lib/forms/Validators';
+
+import { validatorMap } from './ProfileValidators';
 
 const userProfileActions = Action.createActionsFromNames([
     'save',
@@ -28,14 +31,13 @@ userProfileActions.save.subscribe(({ data, complete, error }) => {
         // Run field validators
         if (Array.isArray(userSettingsKeyMapping[key].validators)) {
             const validators = userSettingsKeyMapping[key].validators;
-            if (!validators.reduce((prev, curr) => prev && wordToValidatorMap.get(curr)(value), true)) {
+            if (!validators.reduce((prev, curr) => prev && validatorMap.get(curr)(value), true)) {
                 log.warn(`One or more validators did not pass for field "${key}" and value "${value}"`);
                 return;
             }
         }
 
-        const api = d2.Api.getApi();
-        api.update('me', payload)
+        getProfileUpdatePromise(key, value, payload, userProfileStore.state.id, d2)
             .then(() => {
                 log.debug('User Profile updated successfully.');
                 userSettingsActions.showSnackbarMessage({
@@ -54,5 +56,5 @@ userProfileActions.save.subscribe(({ data, complete, error }) => {
             });
     });
 });
-
+});
 export default userProfileActions;
