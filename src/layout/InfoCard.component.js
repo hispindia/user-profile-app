@@ -20,7 +20,7 @@ class InfoCard extends Component {
     state = {
         canRender: false,
     };
-    
+
     componentWillMount() {
         Promise.all([
             this.props.valueStore.state.getUserRoles(),
@@ -69,12 +69,12 @@ class InfoCard extends Component {
         const labelValue = String(this.props.valueStore.state[labelName]).trim();
 
         switch (type) {
-        case 'textfield': return labelValue;
-        case 'date': return this.getBirthdayDateValue(this.props.valueStore.state[labelName]);
-        case 'dropdown': return this.getOptionTypeValue(labelName);
-        case 'userOrgUnits': return this.getUserOrgUnitsValue();
-        case 'userRoles': return this.getUserRolesValue();
-        default: return `${labelValue} value not found`;
+            case 'textfield': return labelValue;
+            case 'date': return this.getBirthdayDateValue(this.props.valueStore.state[labelName]);
+            case 'dropdown': return this.getOptionTypeValue(labelName);
+            case 'userOrgUnits': return this.getUserOrgUnitsValue();
+            case 'userRoles': return this.getUserRolesValue();
+            default: return `${labelValue} value not found`;
         }
     }
     /* eslint-enable */
@@ -104,9 +104,9 @@ class InfoCard extends Component {
 
     labelExists(labelName, type) {
         return (this.props.valueStore.state &&
-               this.props.valueStore.state.hasOwnProperty(labelName)) ||
-               type === 'userRoles' ||
-               type === 'userOrgUnits';
+            this.props.valueStore.state.hasOwnProperty(labelName)) ||
+            type === 'userRoles' ||
+            type === 'userOrgUnits';
     }
 
     renderLabels(labelNames) {

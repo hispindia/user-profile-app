@@ -7,10 +7,10 @@ import appActions from '../app.actions';
 function SidebarWrapper(props, context) {
     const sideBarSections = [
         { key: 'profile', label: context.d2.i18n.getTranslation('edit_user_profile'), icon: 'create' },
-        { key: 'settings', label: context.d2.i18n.getTranslation('edit_user_settings'), icon: 'build' },
-        { key: 'account', label: context.d2.i18n.getTranslation('edit_account_settings'), icon: 'settings' },
+        { key: 'account', label: context.d2.i18n.getTranslation('change_password'), icon: 'settings' },
         { key: 'viewProfile', label: context.d2.i18n.getTranslation('view_profile'), icon: 'face' },
         { key: 'aboutPage', label: context.d2.i18n.getTranslation('about_dhis2'), icon: 'public' },
+        { key: 'settings', label: context.d2.i18n.getTranslation('edit_user_settings'), icon: 'build' },
     ];
 
     return (

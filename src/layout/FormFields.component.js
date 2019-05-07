@@ -4,8 +4,6 @@ import log from 'loglevel';
 
 // Material UI
 import { Card, CardText } from 'material-ui/Card';
-
-
 // D2 UI
 import { wordToValidatorMap } from 'd2-ui/lib/forms/Validators';
 import FormBuilder from 'd2-ui/lib/forms/FormBuilder.component';
@@ -14,7 +12,6 @@ import TextField from 'd2-ui/lib/form-fields/TextField';
 import DatePicker from 'd2-ui/lib/form-fields/DatePicker.component';
 import Checkbox from 'd2-ui/lib/form-fields/CheckBox.component';
 import AppTheme from './theme';
-
 import userSettingsActions from '../app.actions';
 import userSettingsStore from '../settings/userSettings.store';
 import optionValueStore from '../optionValue.store';
@@ -94,6 +91,7 @@ function createTextField(fieldBase, mapping) {
         }),
     });
 }
+
 function createNumericField(fieldBase, mapping) {
     return Object.assign({}, fieldBase, {
         props: Object.assign({}, fieldBase.props, {
@@ -232,6 +230,7 @@ function createField(fieldName, valueStore, d2) {
     case 'checkbox': return createCheckBox(fieldBase, fieldName);
     case 'dropdown': return createDropDown(fieldBase, fieldName, d2, valueStore, mapping);
     case 'accountEditor': return createAccountEditor(fieldBase, d2, valueStore);
+    case 'avatar': return createAvatarEditor(fieldBase, d2, valueStore);
     default:
         log.warn(`Unknown control type "${mapping.type}" encountered for field "${fieldName}"`);
         return {};
